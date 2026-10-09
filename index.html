@@ -1,4 +1,15 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Grace Bible Church, BHEL LIG, RC Puram, Hyderabad. Weekly worship, prayer, Men's and Women's meetings, missionary work and online connection. Pastor T. Rajesh.">
+<meta name="theme-color" content="#0d1630">
+<link rel="canonical" href="https://www.gracebiblechurchhyd.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Grace Bible Church, Hyderabad">
+<meta property="og:description" content="Worship, prayer and fellowship in RC Puram, Hyderabad.">
+<meta property="og:url" content="https://www.gracebiblechurchhyd.com/">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Grace Bible Church</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -297,6 +308,7 @@ footer small{font-size:.85rem}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 
+</head><body>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Grace Bible Church home">
@@ -451,7 +463,7 @@ footer small{font-size:.85rem}
       </div>
       <div class="panel">
         <h3>Prayer wall</h3>
-        <p style="color:var(--muted);font-size:.94rem">Members share requests here, and everyone signed in sees them live.</p>
+        <p style="color:var(--muted);font-size:.94rem">Share your request with the church family and we will pray together.</p>
         <div id="prayerArea" style="margin-top:14px"></div>
       </div>
     </div>
@@ -538,7 +550,7 @@ footer small{font-size:.85rem}
     <div class="sec-head">
       <p class="eyebrow">Announcements</p>
       <h2>Church news</h2>
-      <p>Updated live by the church office.</p>
+      <p>The latest from the church office.</p>
     </div>
     <div class="ann" id="ann"></div>
     <div id="adminBox"></div>
@@ -887,7 +899,7 @@ function renderAnn(){
 }
 function renderPrayer(){
   const area=$("#prayerArea");
-  if(!DB||!USER){area.innerHTML='<p class="note">The live prayer wall is available to signed-in church members. You are always welcome to bring any request to the Wednesday prayer meeting or to Pastor T. Rajesh in person.</p>';return}
+  if(!DB||!USER){area.innerHTML='<p class="note">Send your prayer request on <a href="https://wa.me/919347873792?text=Prayer%20request" target="_blank" rel="noopener" style="text-decoration:underline">WhatsApp</a> or by email to gracebiblechurch@gmail.com and the church will pray with you. You are always welcome to bring any request to the Wednesday prayer meeting or to Pastor T. Rajesh in person.</p>';return}
   const canWrite=USER.can?USER.can("data.write"):null;
   const form=canWrite===false?'<p class="note">You can read the prayer wall. Writing requests needs member access from the church office.</p>':
   '<form class="f" id="pf"><label for="pn">Your name (optional)<input id="pn" maxlength="60" autocomplete="name"></label><label for="pt">Prayer request<textarea id="pt" maxlength="600" required placeholder="How can we pray for you?"></textarea></label><label class="chk" for="pa"><input type="checkbox" id="pa"> Share anonymously</label><button class="btn btn-solid" type="submit">Share with the church</button></form>';
@@ -934,6 +946,62 @@ function drawAdminLists(){
   if(a)a.innerHTML=dbEvents.slice().sort((x,y)=>x.date.localeCompare(y.date)).map(e=>'<div><span>'+esc(e.date+" · "+e.title)+'</span><button type="button" class="link-del" data-eid="'+esc(e.id)+'">Remove</button></div>').join("");
   if(b)b.innerHTML=anns.map(x=>'<div><span>'+esc((x.date||"")+" · "+x.title)+'</span><button type="button" class="link-del" data-aid="'+esc(x.id)+'">Remove</button></div>').join("");
 }
+/* ===== EDIT YOUR CHURCH NEWS HERE (static site) =====
+   Add or remove items in these lists, save, and upload the file again.
+   cat can be: worship, word, prayer, men, women, youth, mission, special */
+dbEvents=[
+ {
+  "title": "Harvest Thanksgiving Sunday",
+  "date": "2026-11-01",
+  "time": "10:00",
+  "cat": "special",
+  "place": "Church sanctuary",
+  "desc": "A special service of thanksgiving for God's provision. Bring your first-fruit offering and your family."
+ },
+ {
+  "title": "Revival Meetings",
+  "date": "2026-11-20",
+  "time": "18:30",
+  "cat": "special",
+  "place": "Church sanctuary",
+  "desc": "An evening of worship, the Word and prayer with a guest preacher. Come expecting God to move."
+ },
+ {
+  "title": "Christmas Carol Service",
+  "date": "2026-12-24",
+  "time": "19:00",
+  "cat": "special",
+  "place": "Church sanctuary",
+  "desc": "Carols, Scripture readings and a children's nativity. Invite your neighbours."
+ },
+ {
+  "title": "Christmas Day Worship",
+  "date": "2026-12-25",
+  "time": "09:30",
+  "cat": "worship",
+  "place": "Church sanctuary",
+  "desc": "Celebrate the birth of our Saviour together, followed by a shared fellowship meal."
+ },
+ {
+  "title": "Watch Night Service",
+  "date": "2026-12-31",
+  "time": "22:00",
+  "cat": "prayer",
+  "place": "Church sanctuary",
+  "desc": "We thank God for the year gone by and welcome the new year on our knees."
+ }
+];
+anns=[
+ {
+  "title": "Welcome to our new website",
+  "body": "Find the weekly schedule, calendar, daily verse and ways to connect here. Pastor T. Rajesh and the church family welcome you.",
+  "date": "2026-10-07"
+ }
+];
+sermons=[
+  /* {title:"Sermon title",preacher:"Pastor T. Rajesh",date:"2026-10-11",scripture:"John 3:16-21",link:"https://youtube.com/...",notes:"Short notes"} */
+];
+dbEvents.forEach((e,i)=>e.id="e"+i);anns.forEach((a,i)=>a.id="a"+i);sermons.forEach((x,i)=>x.id="s"+i);
 renderSpecial();renderAnn();renderPrayer();renderSermons();tick();
 
 (async function boot(){
